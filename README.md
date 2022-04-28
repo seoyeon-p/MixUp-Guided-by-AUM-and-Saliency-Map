@@ -4,7 +4,7 @@ Seo Yeon Park, Cornelia Caragea : On the Calibration of Pre-trained Language Mod
 
 If you would like to refer to it, please cite the paper mentioned above.
 
-# Getting Started
+
 
 ## Datasets
 We use datasets released by [https://github.com/shreydesai/calibration](https://drive.google.com/file/d/1ro3Q7019AtGYSG76KeZQSq35lBi7lU3v/view). To download out-of-domain datasets (MNLI/TwitterPPDB/HellaSWAG), visit the aforementioned link. 
