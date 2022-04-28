@@ -8,7 +8,20 @@ If you would like to refer to it, please cite the paper mentioned above.
 
 ## Datasets
 We use datasets released by [https://github.com/shreydesai/calibration](https://drive.google.com/file/d/1ro3Q7019AtGYSG76KeZQSq35lBi7lU3v/view). To download out-of-domain datasets (MNLI/TwitterPPDB/HellaSWAG), visit the aforementioned link. 
-For the in-domain datasets (SNLI/QQP/SWAG), we download the datasets from the previous link and preprocess the datasets to let each sample to has a unique id. Full datasets are provided in this [link](https://drive.google.com/drive/folders/1xFxPI71mPgx81464yWbOt2QiFBgDTLVq?usp=sharing). In this link, we also provide datasets that are split by Area Under Margins (AUMs) on BERT. Specifically, you can find out train_high.tsv and train_low.tsv, in which train_high.tsv file contains samples that are easy-to-learn and train_low.tsv file contains samples that are hard-to-learn/ambiguous in terms of BERT model. 
+For the in-domain datasets (
+
+
+
+
+
+
+
+
+
+
+
+
+/QQP/SWAG), we download the datasets from the previous link and preprocess the datasets to let each sample to has a unique id. Full datasets are provided in this [link](https://drive.google.com/drive/folders/1xFxPI71mPgx81464yWbOt2QiFBgDTLVq?usp=sharing). In this link, we also provide datasets that are split by Area Under Margins (AUMs) on BERT. Specifically, you can find out train_high.tsv and train_low.tsv, in which train_high.tsv file contains samples that are easy-to-learn and train_low.tsv file contains samples that are hard-to-learn/ambiguous in terms of BERT model. 
 
 Note that our implementation is based on the implementation provided by [this repository](https://github.com/shreydesai/calibration). 
 
@@ -84,7 +97,7 @@ Then, we conduct MixUp on easy-to-learn and hard-to-learn/ambiguous samples by l
 ```
 export DEVICE=0
 export MODEL="bert-base-uncased"  # options: bert-base-uncased, roberta-base
-export TASK="SNLI"  # options: SNLI, MNLI, QQP, TwitterPPDB, SWAG, HellaSWAG
+export TASK="QQP"  # options: SNLI, MNLI, QQP, TwitterPPDB, SWAG, HellaSWAG
 export MAX_SEQ_LENGTH=512
 
 if [ $MODEL = "bert-base-uncased" ]; then
@@ -128,7 +141,7 @@ To evaluate the fine-tuned model on an out-of-domain test set, execute the below
 ```
 export DEVICE=0
 export MODEL="bert-base-uncased"  
-export TASK="MNLI"  # options: SNLI, MNLI, QQP, TwitterPPDB, SWAG, HellaSWAG
+export TASK="TwitterPPDB"  # options: SNLI, MNLI, QQP, TwitterPPDB, SWAG, HellaSWAG
 export MAX_SEQ_LENGTH=256
 
 if [ $MODEL = "bert-base-uncased" ]; then
@@ -152,7 +165,7 @@ python3 train.py \
 Then, we evaluate model performance (accuracy) and calibration (ECEs) using the output files dumped in the previous step. 
 
 ```
-export TEST_PATH="./output/SNLI_bert-base-uncased.json"
+export TEST_PATH="./output/QQP_bert-base-uncased.json"
 
 python3 calibrate.py \
     --test_path $TEST_PATH \
