@@ -24,12 +24,12 @@ pip install -r requirements.txt
 
 
 ## Data Categorization
-In our proposed method, we first measure AUMs of all training samples to categorize datasets into easy-to-learn and hard-to-learn/ambiguous. Below we provide an example script for measuring AUM for SNLI on BERT.
+In our proposed method, we first measure AUMs of all training samples to categorize datasets into easy-to-learn and hard-to-learn/ambiguous. Below we provide an example script for measuring AUM for QQP on BERT.
 
 ```
 export DEVICE=0
 export MODEL="bert-base-uncased"  # options: bert-base-uncased, roberta-base
-export TASK="SNLI"  # options: SNLI, MNLI, QQP, TwitterPPDB, SWAG, HellaSWAG
+export TASK="QQP"  # options: SNLI, MNLI, QQP, TwitterPPDB, SWAG, HellaSWAG
 export MAX_SEQ_LENGTH=512
 
 if [ $MODEL = "bert-base-uncased" ]; then
@@ -70,8 +70,9 @@ After you finish measuring AUMs on BERT, the file is generated which contains AU
 
 ```
 python3 generate_data_category.py \
-    --task SNLI \
-    --th 3.5 \
+    --task QQP \
+    --th 4.4 \
+    --model bert-base-uncased \
     --aum   
 ```
 
