@@ -8,11 +8,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--task', type=str)
 parser.add_argument('--th', type=float, default='2.')
 parser.add_argument('--aum', action='store_true')
+parser.add_argument('--model',type=str)
 args = parser.parse_args()
 
 print(args)
 
-path = './output/'+args.task+'/aum_values.csv'
+path = './output/'+args.task+"_"+args.model+'/aum_values.csv'
 original_path = './calibration_data/'+args.task+'/train.tsv'
 
 class SNLIProcessor:
@@ -23,12 +24,12 @@ class SNLIProcessor:
             desc = f'loading \'{path}\''
             idx = 0
             for row in tqdm(reader, desc=desc):
-            	if idx == 0: 
-            		header = row
-            	else:
+                if idx == 0: 
+                    header = row
+                else:
                     guid = row[1]
                     samples[guid] = row
-            	idx += 1
+                idx += 1
         return samples, header
 
 class QQPProcessor:
@@ -56,12 +57,12 @@ class SWAGProcessor:
             desc = f'loading \'{path}\''
             idx = 0
             for row in tqdm(reader, desc=desc):
-            	if idx == 0: 
-            		header = row
-            	else:
+                if idx == 0: 
+                    header = row
+                else:
                     guid = row[5]
                     samples[guid] = row
-            	idx += 1
+                idx += 1
         return samples, header
 
 def select_processor():
